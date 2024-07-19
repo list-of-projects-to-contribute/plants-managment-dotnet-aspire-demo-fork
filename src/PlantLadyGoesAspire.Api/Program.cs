@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.AddSqlServerDbContext<NewDbContext>("sqldb");
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -44,4 +46,5 @@ public record Plant(string Name, string? Sunlight, string? Summary)
 {
     public DateOnly LastWatered { get; } = DateOnly.FromDateTime(DateTime.Now.AddDays(-7));
     public string? Image { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 }
