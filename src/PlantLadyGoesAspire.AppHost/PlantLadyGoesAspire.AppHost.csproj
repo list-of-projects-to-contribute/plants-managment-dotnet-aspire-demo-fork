@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>5f2fa2eb-6dee-41ca-85e8-53cbcd3ca64f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PlantLadyGoesAspire.Api\PlantLadyGoesAspire.Api.csproj" />
+    <ProjectReference Include="..\PlantLadyGoesAspire.Blazor\PlantLadyGoesAspire.Blazor.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -9,10 +9,10 @@ namespace PlantLadyGoesAspire.Blazor
         {
             Plant[]? plants = null;
             plants = await hc.GetFromJsonAsync<Plant[]>("/getPlants", cancellationToken);
-            foreach (var p in plants)
-            {
-                p.LastWatered = DateOnly.FromDateTime(DateTime.Now.AddDays(-7));
-            }
+            //foreach (var p in plants)
+            //{
+            //    p.LastWatered = DateOnly.FromDateTime(DateTime.Now.AddDays(-7));
+            //}
             return plants;
 
         }

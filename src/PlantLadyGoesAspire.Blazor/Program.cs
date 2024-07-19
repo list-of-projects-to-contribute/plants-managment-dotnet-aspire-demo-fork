@@ -1,8 +1,9 @@
-using MudBlazor.Services;
 using PlantLadyGoesAspire.Blazor;
 using PlantLadyGoesAspire.Blazor.Components;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
@@ -14,6 +15,8 @@ builder.Services.AddHttpClient<PlantService>(client =>
 });
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
