@@ -1,18 +1,15 @@
-﻿using PlantLadyGoesAspire.Blazor;
+﻿using Azure.Storage.Blobs;
+using PlantLadyGoesAspire.Blazor;
 using static System.Net.WebRequestMethods;
 
 namespace PlantLadyGoesAspire.Blazor
 {
-    public class PlantService(HttpClient hc)
+    public class PlantService(HttpClient hc, BlobServiceClient bob)
     {
         public async Task<Plant[]> GetPlantsAsync(CancellationToken cancellationToken = default)
         {
             Plant[]? plants = null;
             plants = await hc.GetFromJsonAsync<Plant[]>("/getPlants", cancellationToken);
-            //foreach (var p in plants)
-            //{
-            //    p.LastWatered = DateOnly.FromDateTime(DateTime.Now.AddDays(-7));
-            //}
             return plants;
 
         }

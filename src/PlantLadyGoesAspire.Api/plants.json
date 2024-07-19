@@ -1,22 +1,22 @@
 ﻿[
   {
     "Name": "Monstera",
-    "Image": "https://github.com/maddymontaquila/PlantLadyGoesAspire/blob/main/src/PlantLadyGoesAspire.Api/img/monstera.jpg?raw=true",
+    "Image": "img/monstera.jpg",
     "Sunlight": "Partial Sun 🌤️"
   },
   {
     "Name": "Jade",
-    "Image": "https://github.com/maddymontaquila/PlantLadyGoesAspire/blob/main/src/PlantLadyGoesAspire.Api/img/jade.jpg?raw=true",
+    "Image": "img/jade.jpg",
     "Sunlight": "Partial Sun 🌤️"
   },
   {
     "Name": "Fiddle Leaf Fig",
-    "Image": "https://github.com/maddymontaquila/PlantLadyGoesAspire/blob/main/src/PlantLadyGoesAspire.Api/img/fiddleleaf.jpg?raw=true",
+    "Image": "img/fiddleleaf.jpg",
     "Sunlight": "Full Sun ☀️"
   },
   {
     "Name": "Snake Plant",
-    "Image": "https://github.com/maddymontaquila/PlantLadyGoesAspire/blob/main/src/PlantLadyGoesAspire.Api/img/jade.jpg?raw=true",
+    "Image": "img/snake.jpg",
     "Sunlight": "Thrives in Darkness 🌑"
   }
 ]

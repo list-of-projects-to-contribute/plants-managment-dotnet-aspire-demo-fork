@@ -1,3 +1,5 @@
+using Azure.Storage.Blobs;
+using PlantLadyGoesAspire.Api;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -10,6 +12,9 @@ builder.AddServiceDefaults();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.AddAzureBlobClient("bobtheblob");
+builder.Services.AddSingleton<PlantStorageService>();
 
 var app = builder.Build();
 
@@ -24,18 +29,19 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+var plantStorageService = app.Services.GetRequiredService<PlantStorageService>();
 
 app.MapGet("/getPlants", () =>
 {
-    var plants = JsonSerializer.Deserialize<Plant[]>(System.IO.File.ReadAllText("plants.json")) ?? Array.Empty<Plant>();
-    return plants;
+    return plantStorageService.GetAndStorePlants();
 })
 .WithOpenApi();
 
 app.Run();
 
 
-internal record Plant(string Name, string? Image, string? Sunlight, string? Summary)
+public record Plant(string Name, string? Sunlight, string? Summary)
 {
     public DateOnly LastWatered { get; } = DateOnly.FromDateTime(DateTime.Now.AddDays(-7));
+    public string? Image { get; set; }
 }
