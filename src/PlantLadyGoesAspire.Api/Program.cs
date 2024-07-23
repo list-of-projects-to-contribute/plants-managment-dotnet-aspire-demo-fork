@@ -1,6 +1,11 @@
+using Npgsql;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddServiceDefaults();
+
+builder.AddNpgsqlDataSource("PlantzDB");
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -8,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -25,6 +32,12 @@ app.MapGet("/getPlants", () =>
     return plants;
 })
 .WithOpenApi();
+
+app.MapPost("/waterplant/{id}", (NpgsqlConnection db) =>
+{
+    // Do some DB stuff here
+})
+    .WithOpenApi();
 
 app.Run();
 
